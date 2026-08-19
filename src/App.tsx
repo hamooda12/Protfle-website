@@ -8,7 +8,7 @@ const projects = [
   {
     index: "01", category: "Backend" as Category, featured: true,
     title: "Tourism Hotel Booking API",
-    description: "A modular Spring Boot platform covering the full booking lifecycle—from discovery and availability to payments, notifications, and role-aware operations.",
+    description: "A modular Spring Boot platform covering the full booking lifecycle—from discovery and availability to payments and notifications. JWT authentication and role-scoped operations protect the API, while Docker and AWS provide a repeatable deployment path.",
     tags: ["Java 21", "Spring Boot", "JWT", "MySQL", "Docker", "AWS"],
     link: "https://github.com/hamooda12/hotel-management-monolith-backend",
     detail: "REST API · Modular monolith",
@@ -17,7 +17,7 @@ const projects = [
   {
     index: "02", category: "Frontend" as Category, featured: true,
     title: "Hotel Management Frontend",
-    description: "A responsive React booking experience with authentication, hotel exploration, reservation flows, account bookings, admin tools, and refresh-token handling.",
+    description: "A responsive React booking experience spanning hotel discovery, reservations, account bookings, and admin tools. Centralized API integration and refresh-token handling keep authenticated sessions reliable across protected flows.",
     tags: ["React 19", "Vite", "Axios", "Vitest", "Docker"],
     link: "https://github.com/hamooda12/hotel-mangement",
     detail: "Web application · Frontend",
@@ -34,24 +34,15 @@ const projects = [
   },
   {
     index: "04", category: "Full-stack" as Category,
-    title: "Generic CRUD Dashboard",
-    description: "A configurable database dashboard that connects through supplied credentials, discovers tables, and provides streamlined create, read, update, and delete operations.",
+    title: "Database Schema Explorer",
+    description: "A configurable database administration tool that discovers tables and provides streamlined create, read, update, and delete operations through a focused dashboard.",
     tags: ["PHP", "MySQL", "JavaScript", "CSS"],
     link: "https://github.com/hamooda12/CRDUSystem",
     detail: "Database tool · Full-stack",
     visual: "crud"
   },
   {
-    index: "05", category: "Frontend" as Category,
-    title: "To-do List",
-    description: "A focused task-management interface built to practice clear state transitions, direct manipulation, and practical front-end fundamentals.",
-    tags: ["JavaScript", "HTML", "CSS"],
-    link: "https://github.com/hamooda12/ToDoList",
-    detail: "Productivity UI · Frontend",
-    visual: "todo"
-  },
-  {
-    index: "06", category: "Systems" as Category,
+    index: "05", category: "Systems" as Category,
     title: "Master Linux",
     description: "A hands-on systems repository documenting Linux administration through labs, production-style incidents, networking, permissions, services, Bash tooling, and troubleshooting.",
     tags: ["Linux", "Bash", "Networking", "SSH", "UFW", "systemd"],
@@ -67,8 +58,7 @@ function ProjectVisual({ type }: { type: string }) {
   if (type === "api") return <div className="project-visual screenshot-visual"><img src="./project-hotel-api.png" alt="Postman response from the deployed Hotel Booking API"/><span>Actual API response · AWS deployment</span></div>;
   if (type === "hotel") return <div className="project-visual screenshot-visual hotel-shot"><img src="./project-hotel-frontend.png" alt="Hotel image used in the booking frontend"/><div className="hotel-ui"><small>HOTELS&nbsp;&nbsp; MY BOOKINGS&nbsp;&nbsp; SIGN IN</small><strong>Book your next stay.</strong><p>Discover hotels and rooms for every journey.</p><b>Search destinations →</b></div><span>Interface recreated from the project source</span></div>;
   if (type === "library") return <div className="project-visual real-library"><aside><b>Library</b><i>Dashboard</i><i>Books</i><i>Borrowers</i><i>Loans</i></aside><section><h5>Dashboard</h5><div><b>1,500<small>Total books</small></b><b>20<small>Available</small></b><b>32<small>Borrowers</small></b></div><p/><p/></section><span>Interface recreated from the project source</span></div>;
-  if (type === "crud") return <div className="project-visual real-crud"><h5>Islamic Database Setup</h5><p>Connect your MySQL database</p><label>Database Host <i>localhost</i></label><label>Database Username <i>root</i></label><b>Connect to Database</b><span>Interface recreated from the project source</span></div>;
-  if (type === "todo") return <div className="project-visual real-todo" dir="rtl"><h5>📿 قائمة المهام اليومية</h5><p>وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ</p><div><label>عنوان المهمة <i>أدخل عنوان المهمة هنا...</i></label><label>تاريخ التسليم <i>2026 / 07 / 31</i></label></div><b>＋ إضافة المهمة</b><span>Interface recreated from the project source</span></div>;
+  if (type === "crud") return <div className="project-visual real-crud"><h5>Database Schema Explorer</h5><p>Inspect and manage application data</p><div className="schema-table"><b>Table</b><b>Records</b><span>users</span><span>128</span><span>projects</span><span>24</span><span>audit_log</span><span>1,842</span></div><strong>Open selected table →</strong><span>Interface concept based on the project</span></div>;
   return <div className="project-visual linux-visual"><span>$ systemctl status app</span><span className="ok">● active (running)</span><span>$ ss -tulpn</span><span className="cursor">_</span></div>;
 }
 
@@ -93,7 +83,7 @@ export default function Home() {
     <main>
       <header className="site-header">
         <a className="wordmark" href="#top" aria-label="Hamad Tarawa, home">HT<span>.</span></a>
-        <nav aria-label="Primary navigation"><a href="#work">Work</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav>
+        <nav aria-label="Primary navigation"><a href="#work">Work</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
         <div className="header-actions"><span className="system-status"><i /> Systems operational</span><button className="theme-toggle" onClick={() => setTheme(theme === "dark" ? "light" : "dark")} aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}><span>{theme === "dark" ? "Light" : "Dark"}</span><b aria-hidden="true">{theme === "dark" ? "☼" : "◐"}</b></button></div>
       </header>
 
@@ -106,7 +96,7 @@ export default function Home() {
 
       <section className="work-section section-pad" id="work">
         <div className="section-heading reveal"><div><span className="section-index">01 / Work</span><h2>Selected<br/><em>systems.</em></h2></div><p>Projects across product engineering, backend architecture, and production operations.</p></div>
-        <div className="project-filters reveal" role="group" aria-label="Filter projects">{(["All", "Backend", "Frontend", "Full-stack", "Systems"] as Category[]).map(item => <button key={item} className={filter === item ? "active" : ""} onClick={() => setFilter(item)}>{item}<span>{item === "All" ? "06" : String(projects.filter(p => p.category === item).length).padStart(2,"0")}</span></button>)}</div>
+        <div className="project-filters reveal" role="group" aria-label="Filter projects">{(["All", "Backend", "Frontend", "Full-stack", "Systems"] as Category[]).map(item => <button key={item} className={filter === item ? "active" : ""} onClick={() => setFilter(item)}>{item}<span>{String(item === "All" ? projects.length : projects.filter(p => p.category === item).length).padStart(2,"0")}</span></button>)}</div>
         <div className="project-grid">{visibleProjects.map(project => <article className={`project-card reveal ${project.featured ? "featured" : ""}`} key={project.title}><div className="project-topline"><span>{project.index}</span><span>{project.detail}</span></div><ProjectVisual type={project.visual}/><div className="project-copy"><h3>{project.title}</h3><p>{project.description}</p><div className="tags">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div><a href={project.link} target="_blank" rel="noreferrer" aria-label={`View ${project.title} on GitHub`}>View repository <Arrow/></a></div></article>)}</div>
       </section>
 
@@ -128,8 +118,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="about-section section-pad">
-        <div className="about-number">83<span>credits earned</span></div><div className="about-copy reveal"><span className="section-index">04 / Foundation</span><h2>Software engineering,<br/>grounded in <em>practice.</em></h2><p>I’m pursuing a B.Sc. in Software Engineering at Bethlehem University. My work combines formal study in software construction, data structures, databases, networks, operating systems, and UX with hands-on product and infrastructure projects.</p><div className="education"><span>2023 — Present</span><strong>Bethlehem University</strong><small>B.Sc. Software Engineering · Honors, Fall 2025</small></div></div>
+      <section className="about-section section-pad" id="about">
+        <div className="about-number">OPEN<span>to internships &amp; junior roles</span></div><div className="about-copy reveal"><span className="section-index">04 / Foundation</span><h2>Software engineering,<br/>grounded in <em>practice.</em></h2><p>I’m pursuing a B.Sc. in Software Engineering at Bethlehem University. My work combines formal study in software construction, data structures, databases, networks, operating systems, and UX with hands-on product and infrastructure projects.</p><div className="education"><span>2023 — Present</span><strong>Bethlehem University</strong><small>B.Sc. Software Engineering · Honors, Fall 2025</small></div></div>
       </section>
 
       <section className="contact-section" id="contact"><div className="contact-status"><i/> Available for software engineering and DevOps opportunities</div><div className="contact-main"><span>Let’s build something<br/>that holds up.</span><a href="mailto:hamadtarawah@gmail.com">hamadtarawah@gmail.com <Arrow/></a></div><div className="contact-links"><a href="https://github.com/hamooda12" target="_blank" rel="noreferrer">GitHub <Arrow/></a><a href="./Hamad_Tarawa_CV.pdf" download>Download résumé <span>↓</span></a><a href="#top">Back to top <span>↑</span></a></div></section>
